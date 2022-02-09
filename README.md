@@ -1,61 +1,54 @@
 # Go-Makefile
 
-An opinionated Makefile for Go projects. Inspired by [hgfischer/gomk](https://github.com/hgfischer/gomk)
+A Go project general Makefile, encapsulated some common Target. Inspired by [hgfischer/gomk](https://github.com/hgfischer/gomk)
 
-## Use cases
-
-* How would you implement a building workflow using Go alongside other technologies?
-* Do you remember how to run the commands to check the test coverage of you Go project?
+[English](https://github.com/elliotxx/go-makefile/blob/master/README.md) | [简体中文](https://github.com/elliotxx/go-makefile/blob/master/README-zh.md)
 
 ## Usage
 
-* Download `go.mk` to your project:
+* Download `go.makefile` to your project:
 ```
-curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/go.mk
+curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/go.makefile
 ```
-* `include go.mk` in a new or existing Makefile;
-* Check `Makefile.sample` to see some examples on how to integrate with
-  your own build workflow:
+* `include go.makefile` in a new or existing Makefile;
+* add `coverage.out` to `.gitignore`;
+* In the `Makefile` of your Go project, mark the available targets through `##`, `##` followed by the introduction of the target, and the targets marked through `##` will be displayed in the help list:
+
+In `Makefile`：
 ```
-curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/Makefile.sample
+hello:  ## Echo hello message
+	echo "hello world"
 ```
 
-## How it works
+In `terminal`：
+```bash
+$ make
+help        This help message :)
+hello       Echo hello message
+......
+```
 
-Go-Makefile defines default variables and targets for a Go project, to help
-maintain a healthy project. It also checks your current Go environment.
+## Limitation
+* Must be referenced in `Makefile`, you can't be other file names
 
 ## Predefined variables
 
-* `APPBIN`: name of the application, based on the repository name
-* `GOSOURCES`: all `.go` files inside the project repository
+* `APPROOT`: Name of the application, based on the repository name. Such as `kubernetes`.
+* `GOPKG`: Package name of the current go project. Such as `github.com/elliotxx/go-makefile`.
 * `GOPKGS`: all Go pkgs inside the project repository
+* `GOSOURCES`: all `.go` files inside the project repository
+* `GOSOURCE_PATHS`: Source code paths of the current go project. Such as `./pkg/... ./cmd/...`.
+* `COVERAGEOUT`: Coverage of the current go project. Default to `coverage.out`.
 
-*NOTE*: Check the go.mk file for other predefined variables that may 
-conflict with other variables defined in your Makefile.
+*NOTE*: Please check if the preset variables of the `go.makefile` conflict with the variable names in your `Makefile`
 
 ## Predefined targets
 
-* `gomkbuild`: build the application binary, if there is one
-* `gomkxbuild`: build all cross-platform binaries, using `gox`
-* `gomkclean`: clean the project directory of the files produced by go.mk
-* `gomkupdate`: update your go.mk file
-* `vet`: run `go tool vet` in each source file 
-* `lint`: run `golint` in each source file 
-* `fmt`: run `go fmt` in the entire project 
-* `test`: run `go test` for all pkgs in the project
-* `race`: run `go test` with race detection in all pkgs in the project 
-* `deps`: install all deps needed by the project 
-* `cover`: run tests with coverage report in all pkgs in the projects
-* `printvars`: print all variables defined in the Makefile
-
-### Godep support (optional)
-
-* `savegodeps`: save all deps with godep 
-* `restoregodeps`: restore all deps with godep 
-* `updategodeps`: update all deps with godep
-
-## TODO
-
-* Add targets for other tools
-* Add support for `gb`
+* `help`: Show your `Makefile` and `go.makefile`. All available Targets and it`s profile
+* `test`: Run all Go tests
+* `cover`: Run all Go tests and generate coverage report file `${COVERAGEOUT}`
+* `cover-html`: Display the visual results of the coverage report in the browser
+* `format`: Format all Go files
+* `lint`: Check all Go files using the Lint tool
+* `lint-fix`: Lint, will try to fix errors and modify code
+* `doc`: Start the documentation server with godoc
