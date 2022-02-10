@@ -36,6 +36,11 @@ hello       Echo hello message
 * `COVERAGEOUT`: 当前 Go 项目的覆盖率报告文件，默认为：`coverage.out`
 
 *NOTE*: 请自行检查 `go.makefile` 的预置变量是否和你的 `Makefile` 中的变量名冲突
+如果希望优先使用你的 `Makefile` 中的变量值，可以使用如下定义：
+```
+GOSOURCE_PATHS ?= ./pkg/... ./cmd/...
+include go.makefile
+```
 
 ## 预置 Target
 * `help`: 显示你的 `Makefile` 和 `go.makefile` 中所有可用的 target 及其简介

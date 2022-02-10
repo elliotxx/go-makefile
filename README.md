@@ -42,6 +42,12 @@ hello       Echo hello message
 
 *NOTE*: Please check if the preset variables of the `go.makefile` conflict with the variable names in your `Makefile`
 
+If you want to give priority to the variable values in your `Makefile`, you can use the following usage:
+```
+GOSOURCE_PATHS ?= ./pkg/... ./cmd/...
+include go.makefile
+```
+
 ## Predefined targets
 
 * `help`: Show your `Makefile` and `go.makefile`. All available Targets and it`s profile
