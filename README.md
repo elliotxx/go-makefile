@@ -2,6 +2,8 @@
 
 A Go project general Makefile, encapsulated some common Target. Inspired by [hgfischer/gomk](https://github.com/hgfischer/gomk)
 
+## Language
+
 [English](https://github.com/elliotxx/go-makefile/blob/master/README.md) | [简体中文](https://github.com/elliotxx/go-makefile/blob/master/README-zh.md)
 
 ## Usage
