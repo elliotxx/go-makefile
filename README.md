@@ -58,3 +58,7 @@ include go.makefile
 * `lint`: Check all Go files using the Lint tool
 * `lint-fix`: Lint, will try to fix errors and modify code
 * `doc`: Start the documentation server with godoc
+
+## Users
+* [elliotxx/go-web-prototype](https://github.com/elliotxx/go-web-prototype)
+* [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)

@@ -51,3 +51,7 @@ include go.makefile
 * `lint`: 使用 lint 工具检查所有 Go 源代码
 * `lint-fix`: 尝试自动修复 lint 工具检查出的问题
 * `doc`: 使用 godoc 启动文档服务器
+
+## 用户
+* [elliotxx/go-web-prototype](https://github.com/elliotxx/go-web-prototype)
+* [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
