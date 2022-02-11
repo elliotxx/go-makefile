@@ -1,3 +1,6 @@
+# go.mk is a Go project general Makefile, encapsulated some common Target.
+# Project repository: https://github.com/elliotxx/go-makefile
+
 APPROOT     		?= $(shell basename $(PWD))
 GOPKG       		?= $(shell go list 2>/dev/null)
 GOPKGS      		?= $(shell go list ./... 2>/dev/null)
