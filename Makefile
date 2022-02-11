@@ -1,5 +1,5 @@
-# This is an Makefile example of using go.makefile
-include go.makefile
+# This is an Makefile example of using go.mk
+include go.mk
 
 BUILD_ROOT ?= ./build
 

@@ -8,11 +8,11 @@ A Go project general Makefile, encapsulated some common Target. Inspired by [hgf
 
 ## Usage
 
-* Download `go.makefile` to your project:
+* Download `go.mk` to your project:
 ```
-curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/go.makefile
+curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/go.mk
 ```
-* `include go.makefile` in a new or existing Makefile;
+* `include go.mk` in a new or existing Makefile;
 * add `coverage.out` to `.gitignore`;
 * In the `Makefile` of your Go project, mark the available targets through `##`, `##` followed by the introduction of the target, and the targets marked through `##` will be displayed in the help list:
 
@@ -42,17 +42,17 @@ hello       Echo hello message
 * `GOSOURCE_PATHS`: Source code paths of the current go project. Such as `./pkg/... ./cmd/...`.
 * `COVERAGEOUT`: Coverage of the current go project. Default to `coverage.out`.
 
-*NOTE*: Please check if the preset variables of the `go.makefile` conflict with the variable names in your `Makefile`
+*NOTE*: Please check if the preset variables of the `go.mk` conflict with the variable names in your `Makefile`
 
 If you want to give priority to the variable values in your `Makefile`, you can use the following usage:
 ```
 GOSOURCE_PATHS ?= ./pkg/... ./cmd/...
-include go.makefile
+include go.mk
 ```
 
 ## Predefined targets
 
-* `help`: Show your `Makefile` and `go.makefile`. All available Targets and it`s profile
+* `help`: Show your `Makefile` and `go.mk`. All available Targets and it`s profile
 * `test`: Run all Go tests
 * `cover`: Run all Go tests and generate coverage report file `${COVERAGEOUT}`
 * `cover-html`: Display the visual results of the coverage report in the browser
