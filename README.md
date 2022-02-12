@@ -64,3 +64,4 @@ include go.mk
 ## Adoption
 * [elliotxx/go-web-prototype](https://github.com/elliotxx/go-web-prototype)
 * [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
+* [elliotxx/gulu](https://github.com/elliotxx/gulu)
