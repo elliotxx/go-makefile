@@ -9,20 +9,24 @@ A Go project general Makefile, encapsulated some common Target. Inspired by [hgf
 ## Usage
 
 * Download `go.mk` to your project:
+
 ```
 curl -O https://raw.githubusercontent.com/elliotxx/go-makefile/master/go.mk
 ```
+
 * `include go.mk` in a new or existing Makefile;
 * add `coverage.out` to `.gitignore`;
 * In the `Makefile` of your Go project, mark the available targets through `##`, `##` followed by the introduction of the target, and the targets marked through `##` will be displayed in the help list:
 
 In `Makefile`：
+
 ```
 hello:  ## Echo hello message
 	echo "hello world"
 ```
 
 In `terminal`：
+
 ```bash
 $ make
 help        This help message :)
@@ -31,6 +35,7 @@ hello       Echo hello message
 ```
 
 ## Limitation
+
 * Must be referenced in `Makefile`, you can't be other file names
 
 ## Predefined variables
@@ -45,6 +50,7 @@ hello       Echo hello message
 *NOTE*: Please check if the preset variables of the `go.mk` conflict with the variable names in your `Makefile`
 
 If you want to give priority to the variable values in your `Makefile`, you can use the following usage:
+
 ```
 GOSOURCE_PATHS ?= ./pkg/... ./cmd/...
 include go.mk
@@ -62,6 +68,8 @@ include go.mk
 * `doc`: Start the documentation server with godoc
 
 ## Adoption
+
 * [elliotxx/go-web-prototype](https://github.com/elliotxx/go-web-prototype)
 * [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * [elliotxx/gulu](https://github.com/elliotxx/gulu)
+* [elliotxx/mdfmt](https://github.com/elliotxx/mdfmt)
