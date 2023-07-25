@@ -1,4 +1,6 @@
 # go.mk is a Go project general Makefile, encapsulated some common Target.
+# You can copy the `go.mk` to your project.
+# Current version: v1.0.0
 # Project repository: https://github.com/elliotxx/go-makefile
 
 APPROOT     		?= $(shell basename $(PWD))
