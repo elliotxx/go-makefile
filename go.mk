@@ -32,15 +32,16 @@ help:  ## This help message :)
 # please visit https://github.com/eisenxp/macos-golink-wrapper to find the solution.
 .PHONY: test
 test:  ## Run the tests
-	go test -gcflags=all=-l -timeout=10m `go list $(GOSOURCE_PATHS)` ${TEST_FLAGS}
+	@go test -gcflags=all=-l -timeout=10m `go list $(GOSOURCE_PATHS)` ${TEST_FLAGS}
 
 .PHONY: cover
 cover:  ## Generates coverage report
-	go test -gcflags=all=-l -timeout=10m `go list $(GOSOURCE_PATHS)` -coverprofile $(COVERAGEOUT) ${TEST_FLAGS}
+	@echo "🚀 Executing all unit tests:"; go test -gcflags=all=-l -timeout=10m `go list $(GOSOURCE_PATHS)` -coverprofile $(COVERAGEOUT) ${TEST_FLAGS} && \
+	(echo "\n📊 Calculating coverage rate:"; go tool cover -func=$(COVERAGEOUT)) || (echo "\n💥 Running go test fail!"; exit 1)
 
 .PHONY: cover-html
 cover-html:  ## Generates coverage report and displays it in the browser
-	go tool cover -html=$(COVERAGEOUT)
+	@go tool cover -html=$(COVERAGEOUT)
 
 .PHONY: format
 format:  ## Format source code
@@ -50,7 +51,7 @@ format:  ## Format source code
 .PHONY: lint
 lint:  ## Lint, will not fix but sets exit code on error
 	@which $(GOLINTER) > /dev/null || (echo "Installing $(GOLINTER)@$(GOLINTER_VERSION) ..."; go install github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLINTER_VERSION) && echo -e "Installation complete!\n")
-	$(GOLINTER) run --deadline=10m $(GOSOURCE_PATHS)
+	@$(GOLINTER) run --deadline=10m $(GOSOURCE_PATHS)
 
 .PHONY: lint-fix
 lint-fix:  ## Lint, will try to fix errors and modify code
@@ -60,4 +61,4 @@ lint-fix:  ## Lint, will try to fix errors and modify code
 .PHONY: doc
 doc:  ## Start the documentation server with godoc
 	@which godoc > /dev/null || (echo "Installing godoc@latest ..."; go install golang.org/x/tools/cmd/godoc@latest && echo -e "Installation complete!\n")
-	godoc -http=:6060
+	@godoc -http=:6060
